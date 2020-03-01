@@ -39,5 +39,24 @@ public protocol MessageType {
 
     /// The kind of message and its underlying kind.
     var kind: MessageKind { get }
+    
+    var status: MessageStatus { get }
 
+}
+
+public enum MessageStatus: Int, Codable {
+    case sending = 1
+    case sent
+    case seen
+    
+    public var stringValue: String {
+        switch self {
+        case .sending:
+            return "Sending"
+        case .sent:
+            return "Sent"
+        case .seen:
+            return "Seen"
+        }
+    }
 }
