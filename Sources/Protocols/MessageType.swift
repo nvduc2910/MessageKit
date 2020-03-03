@@ -45,12 +45,16 @@ public protocol MessageType {
 }
 
 public enum MessageStatus: Int, Codable {
-    case sending = 1
+
+    case fail = 0
+    case sending
     case sent
     case seen
     
     public var stringValue: String {
         switch self {
+        case .fail:
+            return "Fail"
         case .sending:
             return "Sending"
         case .sent:
